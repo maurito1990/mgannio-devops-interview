@@ -63,14 +63,6 @@ jobs:
             ./gradlew test
       - store_test_results:
           path: build/test-results
-      - run:
-          name: Assemble JAR
-          command: |
-            # Skip this for other nodes
-            if [ "$CIRCLE_NODE_INDEX" == 0 ]; then
-              ./gradlew assemble
-            fi
-      # This will be empty for all nodes except the first one
       - store_artifacts:
           path: build/libs
 
@@ -79,3 +71,6 @@ workflows:
   workflow:
     jobs:
     - build
+    - test:
+        requires:
+          - build

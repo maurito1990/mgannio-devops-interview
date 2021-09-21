@@ -19,7 +19,7 @@ dependencies {
 
 tasks {
     bootJar {
-        archiveFileName.set("app1.jar")
+        archiveFileName.set("app.jar")
     }
 }
 
